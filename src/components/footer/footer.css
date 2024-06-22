@@ -1,0 +1,180 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.footerstart {
+  background-color: black;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 55px;
+  box-sizing: border-box;
+}
+
+.footer-flex {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  height: 40vh;
+  margin: auto;
+  width: 100%;
+}
+
+.footerstart p a:last-child {
+  text-decoration: none;
+  color: white;
+  transition: 0.5s;
+}
+
+.footerstart p a:last-child:hover {
+  color: orange;
+}
+
+.footerstart>img {
+  width: 250px;
+  transition: 0.5s;
+}
+
+.footerstart>img:hover {
+  filter: drop-shadow(3px 0px 0px white);
+  cursor: pointer;
+}
+
+hr {
+  width: 100%;
+  margin: auto;
+}
+
+.footerstart>p {
+  color: white;
+  margin: auto;
+  font-size: 12px;
+  padding-top: 10px;
+}
+
+.information,
+.usefullinks,
+.ourservices,
+.latestupdate {
+  margin-bottom: 30px;
+}
+
+.information h1,
+.usefullinks h1,
+.ourservices h1,
+.latestupdate h1 {
+  font-size: 22px;
+  color: white;
+  margin-bottom: 30px;
+}
+
+.information a,
+.usefullinks a,
+.ourservices a {
+  text-decoration: none;
+  color: white;
+  line-height: 40px;
+  transition: 0.5s;
+  font-size: 15px;
+}
+
+.information p:hover a,
+.usefullinks p:hover a,
+.ourservices p:hover a {
+  color: orange;
+}
+
+.ourservices .services {
+  display: flex;
+  gap: 20px;
+}
+.ourservices h1{
+  text-align: center;
+}
+.information p,
+.usefullinks p,
+.ourservices p,
+.latestupdate p {
+  color: white;
+  margin: 5px 0;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+
+.socialmedias {
+  margin-top: 10px;
+}
+
+.socialmedias div {
+  display: inline-block;
+  width: 30px;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  line-height: 30px;
+  margin-right: 10px;
+  transition: 0.5s;
+}
+
+.socialmedias div:hover {
+  background-color: orange;
+  color: black;
+  cursor: pointer;
+  transform: translateY(-5px);
+}
+
+#email {
+  width: 300px;
+  height: 60px;
+  padding: 15px;
+  font-size: 20px;
+  border-radius: 10px 0 0 10px;
+  border: none;
+}
+
+.subscribelatest {
+  display: flex;
+  gap: 3px;
+}
+
+#email:focus {
+  outline-color: rgba(0, 0, 255, 0.619);
+}
+
+#subscribebutton {
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  font-weight: 500;
+  font-size: 20px;
+  min-width: 90px;
+  text-align: center;
+  border-radius: 0 10px 10px 0px;
+  background-color: yellow;
+  cursor: pointer;
+  border: none;
+}
+
+
+/* Media Screen Started */
+@media (max-width: 600px) {
+
+  .ourservices {
+    display: none;
+  }
+
+  .footerstart>img {
+    width: 180px;
+  }
+  .latestupdate{
+text-align: center;
+  }
+  .footer-flex{
+    margin-bottom: 20vh;
+  }
+}

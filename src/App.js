@@ -1,25 +1,55 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
+import Layout from './components/layout/layout';
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import Main from './components/main/main';
+import Services from './components/services/services';
+import About from './components/about/about';
+import Vacancies from './components/vacancies/vacancies';
+import Contact from './components/contact/contact';
+import OneService from './components/services/serviceslist/oneservice';
+import TwoService from './components/services/serviceslist/twoservice';
+import ThreeService from './components/services/serviceslist/threeservice';
+import FourService from './components/services/serviceslist/fourservice';
+import FiveService from './components/services/serviceslist/fiveservice';
+import SixService from './components/services/serviceslist/sixservice';
+import SevenService from './components/services/serviceslist/sevenservice';
+import EightService from './components/services/serviceslist/eightservice';
+import LoaderStyle from './components/loader/loader';
+
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+<>
+    <BrowserRouter>
+    <Routes>
+    <Route>
+        <Route path="/" element={<Layout><Main/></Layout>} />
+        <Route path="/about" element={<Layout><About/></Layout>} />
+        <Route path="/services" element={<Layout><Services/></Layout>} />
+        <Route path="/vacancies" element={<Layout><Vacancies/></Layout>} />
+        <Route path="/contact" element={<Layout><Contact/></Layout>} />
+        <Route path="/services/oneservice" element={<Layout><OneService/></Layout>} />
+        <Route path="/services/twoservice" element={<Layout><TwoService/></Layout>} />
+        <Route path="/services/threeservice" element={<Layout><ThreeService/></Layout>} />
+        <Route path="/services/fourservice" element={<Layout><FourService/></Layout>} />
+        <Route path="/services/fiveservice" element={<Layout><FiveService/></Layout>} />
+        <Route path="/services/sixservice" element={<Layout><SixService/></Layout>} />
+        <Route path="/services/sevenservice" element={<Layout><SevenService/></Layout>} />
+        <Route path="/services/eightservice" element={<Layout><EightService/></Layout>} />
+    </Route>
+    </Routes>
+    </BrowserRouter>
+
+    <LoaderStyle/>
+
+    </>
+    
+    
+
+  )
 }
 
 export default App;

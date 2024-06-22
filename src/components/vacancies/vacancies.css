@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.VacanciesBackImage {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: -9;
+  }
+  
+  .VacanciesBackImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .VacanciesBackImage .VacanciesContent {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+  }
+  
+  .VacanciesContainer {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .VacanciesContainer .VacanciesHeader {
+    text-align: center;
+    border: 1px solid rgba(128, 128, 128, 0.686);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 50vw;
+    height: 10vh;
+    margin: 0px auto;
+    border-radius: 10px;
+  }
+  
+  .VacanciesInfo {
+    border: 1px solid rgba(128, 128, 128, 0.686);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    width: 80vw;
+    height: 50vh;
+    margin: 50px auto;
+    border-radius: 10px;
+    padding: 15px;
+    overflow: auto;
+  }
+  
+  .vacinfo {
+    padding: 10px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .VacanciesInfo ul {
+    list-style: none;
+    font-size: 25px;
+    border: 1px solid rgba(0, 0, 0, 0.289);
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 15px;
+    border-radius: 10px;
+  }
+  
+  .vacinfo a {
+    text-decoration: none;
+    color: black;
+  }

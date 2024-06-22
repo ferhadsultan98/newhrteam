@@ -1,0 +1,46 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.AboutBackImage {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    z-index: -9;
+  }
+  
+  .AboutBackImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .AboutBackImage .AboutContent {
+    position: absolute;
+    top: 20vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 25px;
+  }
+  
+  .aboutinfo {
+    padding: 80px;
+  }
+  
+  .aboutinfo h3 {
+    margin-bottom: 20px;
+  }
+  
+  .aboutinfo h4 {
+    margin-bottom: 20px;
+  }
+  
+  .aboutinfo ul {
+    margin-bottom: 20px;
+  }
