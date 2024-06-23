@@ -1,15 +1,16 @@
+/* General Reset and Styling */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Top Header Styling */
 .topheader {
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 15px;
-    box-sizing: border-box;
     background-color: rgb(246, 247, 248);
 }
 
@@ -67,7 +68,6 @@
     display: flex;
     align-items: center;
     gap: 6px;
-
 }
 
 .contactsu .phone h3 a {
@@ -80,7 +80,7 @@
     color: #00A97F;
 }
 
-/* Bottom Header Start */
+/* Bottom Header Styling */
 .bottomheader {
     height: 12vh;
     display: flex;
@@ -154,15 +154,16 @@ header hr {
     transition: 0.3s;
 }
 
-
-/* Dropdown Menu Started */
+/* Dropdown Menu Styling */
 .Menu .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #aaa9ad;
+    background-color: rgb(246, 247, 248);
     width: 1fr;
+    height: 1fr;
     box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    margin-top: 20x;
+    margin-top: 20px;
+    border-radius: 20px;
 }
 
 .Menu li:hover .dropdown-content {
@@ -172,22 +173,32 @@ header hr {
 
 .Menu .dropdown-content a {
     color: black;
-    padding: 10px 16px;
+    padding: 6px 16px;
     text-decoration: none;
     display: block;
     transition: 1s;
     height: 40px;
-    font-size: 17px;
-    border-bottom: 1px solid black;
+    font-size: 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.147);
     transition: 0.5s;
 }
 
+.Menu .dropdown-content a:first-child {
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+
+.Menu .dropdown-content a:last-child {
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
 .Menu .dropdown-content a:hover {
-    background-color: black;
+    background-color: rgb(200, 210, 230);
     color: white;
 }
 
-/* Dropdown Menu Ended */
+/* Start Button Styling */
 .StartButton {
     --color: #00A97F;
     padding: 0.8em 1.7em;
@@ -244,25 +255,40 @@ header hr {
     filter: brightness(.8);
 }
 
-/* Header Ended */
-/* Header Media Screen Started */
-@media (max-width: 600px) {
-    .Menu {
-        width: 60px;
+.MenuToggle {
+    display: none;
+}
 
-    }
-
+/* Media Queries for Smaller Screens */
+@media (max-width: 640px) {
     .Menu ul {
-        gap: 10px;
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: white;
+        width: 100%;
+        padding: 10px;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     }
 
-    .Menu ul li {
-        font-size: 12px;
-        width: 80px;
+    .Menu ul.active {
+        display: flex;
     }
 
-    .Menu ul li a {
-        width: 50px;
+    .MenuToggle {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+        z-index: 1000;
+    }
+
+    .LogoAndNavbar {
+        justify-content: space-between;
+        width: 100%;
     }
 
     .topheader {
@@ -273,11 +299,8 @@ header hr {
         height: 60px;
     }
 
-    .LogoAndNavbar {
-        width: 200px;
-        justify-content: space-between;
-        align-items: center;
-        padding: 10px;
+    .LogoAndNavbar a:last-child {
+        display: none;
     }
 
     .LogoAndNavbar a:first-child {
@@ -291,19 +314,23 @@ header hr {
     }
 
     .Menu .dropdown-content a {
-        min-width: 200px;
-        height: 20px;
-        padding: 5px;
+        min-width: 400px;
+        height: 30px;
     }
-
-    .Menu .dropdown-content a h3 {
-        font-size: 10px;
-        max-width: 200px;
+    .Menu .dropdown-content a{
+        padding: 2px 10px;
+    }
+    .Menu .dropdown-content h3 {
+        font-size: 20px;
+        max-width: 600px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.312);
+        transition: 0.7s;
+    }
+    .Menu .dropdown-content h3:hover {
+        color: white;
     }
 
     .StartButton {
         display: none;
     }
-
-
 }

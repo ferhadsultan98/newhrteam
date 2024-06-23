@@ -1,12 +1,33 @@
 import LogoImg from "../../assets/hrteamlogo.png";
+import React, { useState, useEffect } from "react";
 import "../header/header.css";
 import { Link } from "react-router-dom";
 import { GoClockFill } from "react-icons/go";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
+import Hamburger from 'hamburger-react'
 
 let Header = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const closeMenu = (event) => {
+    if (!event.target.closest(".Menu")) {
+      setMenuOpen(false);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("click", closeMenu);
+    return () => {
+      document.removeEventListener("click", closeMenu);
+    };
+  }, []);
+  const [isToggled, setToggled] = useState(false)
   return (
     <header>
       <div className="topheader">
@@ -21,16 +42,14 @@ let Header = () => {
                 <IoCall /> +994 70-330-86-07
               </a>
             </h3>
-            </div>
-          |
-         <div className="mails">
+          </div>
+          <div className="mails">
             <h3>
               <a href="mailto:info@hrteam.az">
-              <MdEmail /> info@hrteam.az
+                <MdEmail /> info@hrteam.az
               </a>
             </h3>
-            </div>
-          |
+          </div>
           <div className="socials">
             <a
               href="https://www.facebook.com/"
@@ -62,14 +81,18 @@ let Header = () => {
             <img src={LogoImg} alt="LogoImg.png" />
           </Link>
           <div className="Menu">
-            <ul>
+            <button className="MenuToggle" onClick={toggleMenu}>
+            <Hamburger toggled={isToggled} toggle={setToggled} />
+            </button>
+            <ul className={menuOpen ? "active" : ""}>
               <Link className="link" to="/">
-                <li>Ana Səhifə</li>
+                <li>Ana Səhifə </li>
               </Link>
               <Link className="link" to="/about">
                 <li>Haqqımızda</li>
               </Link>
               <Link className="link">
+                {" "}
                 <li>
                   Xidmətlər
                   <div className="dropdown-content">
@@ -108,7 +131,9 @@ let Header = () => {
               </Link>
             </ul>
           </div>
+          <Link className="link" to="/contact">
           <button className="StartButton">İşə başlayın</button>
+              </Link>
         </div>
       </div>
       <hr />
