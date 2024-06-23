@@ -1,13 +1,130 @@
-body{
-   overflow-x: hidden;
+body {
+    overflow-x: hidden;
 }
-.CarouselPart{
+
+.CarouselPart-One {
+    width: 100vw;
+    height: 83vh;
+    position: relative;
+    cursor: grab;
+}
+
+.CarouselPart-One .OneCaption {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 30px;
+    font-size: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.OneCaption .oneTheme{
+    max-width: 45vw;
+}
+.OneCaption .oneVector{
+    width: 40vw;
+}
+.OneCaption .oneVector img{
     width: 100%;
     height: 100%;
-
 }
-.CarouselPart img{
+.CarouselPart-One img {
+    width: 100%;
+    height: 100%;
+}
+
+
+
+/* Two Start */
+.CarouselPart-Two {
     width: 100vw;
-    height: 100vh;
-    
+    height: 83vh;
+    position: relative;
+    cursor: grab;
+}
+
+.CarouselPart-Two .TwoCaption {
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 30px;
+    font-size: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.TwoCaption .twoTheme{
+    max-width: 50vw;
+}
+.TwoCaption .twoVector{
+    width: 35vw;
+}
+ .twoVector img{
+    width: 100%;
+    height: 100%;
+}
+.CarouselPart-Two img {
+    width: 100%;
+    height: 100%;
+}
+/*  Three Start */
+
+
+
+.CarouselPart-Three{
+    width: 100vw;
+    height: 83vh;
+    position: relative;
+    cursor: grab;
+}
+.CarouselPart-Three .ThreeCaption{
+    width: 100%;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    padding: 30px;
+    font-size: 35px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.ThreeCaption .threeTheme{
+    max-width: 55vw;
+}
+.ThreeCaption .threeVector{
+    width: 35vw;
+}
+.threeVector img{
+    width: 100%;
+    height: 100%;
+}
+.CarouselPart-Three img{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@media (max-width: 600px) {
+    .CarouselPart-One{
+        height: 40vh;
+    }
+    .CarouselPart-One .OneCaption{
+        font-size: 15px;
+    }
+    .CarouselPart-Two{
+        height: 40vh;
+    }
+    .CarouselPart-Two .TwoCaption{
+        font-size: 15px;
+    }
+    .CarouselPart-Three{
+        height: 40vh;
+    }
+    .CarouselPart-Three .ThreeCaption{
+        font-size: 15px;
+    }
 }

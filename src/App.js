@@ -42,9 +42,6 @@ function App() {
     </Route>
     </Routes>
     </BrowserRouter>
-
-    <LoaderStyle/>
-
     </>
     
     

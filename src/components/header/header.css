@@ -10,7 +10,7 @@
     align-items: center;
     padding: 15px;
     box-sizing: border-box;
-    background-color: gray
+    background-color: rgb(246, 247, 248);
 }
 
 .timer {
@@ -32,15 +32,63 @@
 
 .contactsu .socials {
     display: flex;
+    gap: 1.5vw;
+    align-items: center;
+    font-size: 20px;
+}
+
+.contactsu .socials a {
+    text-decoration: none;
+    color: black;
+    transition: 0.7s;
+}
+
+.contactsu .socials a:hover {
+    color: #00A97F;
+}
+
+.contactsu .mails {
+    display: flex;
+    align-items: center;
     gap: 6px;
+}
+
+.contactsu .mails h3 a {
+    text-decoration: none;
+    color: black;
+    transition: 0.7s;
+}
+
+.contactsu .mails h3 a:hover {
+    color: #00A97F;
+}
+
+.contactsu .phone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+
+}
+
+.contactsu .phone h3 a {
+    text-decoration: none;
+    color: black;
+    transition: 0.7s;
+}
+
+.contactsu .phone h3 a:hover {
+    color: #00A97F;
+}
+
+/* Bottom Header Start */
+.bottomheader {
+    height: 12vh;
+    display: flex;
     align-items: center;
 }
 
-.bottomheader {
-    height: 10vh;
-    display: flex;
-    align-items: center;
-    background-image: url(../../assets/headercolor.jpg);
+header hr {
+    border: 1px solid rgba(0, 0, 0, 0.236);
 }
 
 .LogoAndNavbar img {
@@ -76,6 +124,14 @@
     font-size: 25px;
     font-weight: bold;
     display: inline-block;
+}
+
+.Menu ul a li:active {
+    color: white;
+}
+
+.Menu ul a li:visited {
+    background-color: white;
 }
 
 .Menu ul li::after {
