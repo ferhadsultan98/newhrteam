@@ -7,7 +7,7 @@ let AboutOneSection = () => {
     <div className="AboutBackImage">
       <img src={AboutBackImage} alt="" />
       <div className="AboutContent">
-        <h1>Autsorsinq həlləri ilə əməliyyatları gücləndirin</h1>
+        <h1>Haqqımızda</h1>
       </div>
     </div>
   );

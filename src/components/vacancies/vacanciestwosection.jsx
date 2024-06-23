@@ -48,6 +48,24 @@ let VacanciesTwoSection = () => {
          <li>Tarix</li>
        </ul>
        </a> 
+      <a href="#"><ul >
+         <li>Vakansiya edən şirkət</li>
+         <li>Vakansiya məlumatı</li>
+         <li>Tarix</li>
+       </ul>
+       </a> 
+      <a href="#"><ul >
+         <li>Vakansiya edən şirkət</li>
+         <li>Vakansiya məlumatı</li>
+         <li>Tarix</li>
+       </ul>
+       </a> 
+      <a href="#"><ul >
+         <li>Vakansiya edən şirkət</li>
+         <li>Vakansiya məlumatı</li>
+         <li>Tarix</li>
+       </ul>
+       </a> 
        </div>
      </div>
      </>
