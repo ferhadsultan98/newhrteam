@@ -9,13 +9,19 @@
     position: relative;
     z-index: -9;
   }
-  
+ 
   .VacanciesBackImage img {
     width: 100%;
     height: 100%;
     object-fit: cover;
   }
-  
+  .VacanciesBackImage .content{
+    position: absolute;
+    left: 45vw;
+    top: 20vw;
+    font-size: 30px;
+    display: flex;
+  }
   .VacanciesContainer {
     width: 1fr;
     height: 1fr;

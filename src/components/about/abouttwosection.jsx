@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../about/about.css";
 import aboutVector from "../../assets/about image.jpg";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 let AboutTwoSection = () => {
+  useEffect(() => {
+    Aos.init();
+     }, [])
   return (
     <div className="aboutContainer">
-      <div className="aboutVector">
-        <img src={aboutVector} alt="" />
+      <div className="aboutVector" data-aos="fade-right"
+     data-aos-offset="300"
+     data-aos-easing="ease-in-sine">
+        <img src={aboutVector} alt="about_vector" />
       </div>
-      <div className="aboutinfo">
+      <div className="aboutinfo" data-aos="fade-left">
         <h2>
           HR Team şirkəti Azərbaycanda Biznes Proseslərinin Autsorsinqi üzrə ən
           öndə gələn müəssisələrdən biridir. Müəssisəmiz 2022-ci ildən bəri

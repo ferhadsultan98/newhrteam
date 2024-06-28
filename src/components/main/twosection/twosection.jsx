@@ -1,5 +1,10 @@
 import React from 'react'
 import "../../main/twosection/twosection.css";
+import Partner1 from '../../../assets/partner/psgfinans.png'
+import Partner2 from '../../../assets/partner/safcatering.avif'
+import Partner3 from '../../../assets/partner/socar.avif'
+import Partner4 from '../../../assets/partner/tacs.png'
+import Partner5 from '../../../assets/partner/yunikteam.svg'
 
 
 let TwoSection = () => {
@@ -11,8 +16,8 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
-          height={100}
+          src={Partner1}
+          height={80}
           width={100}
           alt=""
         />
@@ -21,9 +26,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-          height={100}
-          width={150}
+          src={Partner2}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -31,9 +36,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-          height={100}
-          width={350}
+          src={Partner3}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -41,9 +46,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-          height={100}
-          width={250}
+          src={Partner4}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -51,9 +56,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-          height={100}
-          width={250}
+          src={Partner5}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -61,18 +66,8 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-          height={100}
-          width={250}
-          alt=""
-        />
-      </a>
-    </div>
-    <div className="slide">
-      <a href="#" tabIndex={-1}>
-        <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/1.png"
-          height={100}
+          src={Partner1}
+          height={80}
           width={100}
           alt=""
         />
@@ -81,9 +76,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/2.png"
-          height={100}
-          width={150}
+          src={Partner2}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -91,9 +86,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/3.png"
-          height={100}
-          width={350}
+          src={Partner3}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -101,9 +96,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/4.png"
-          height={100}
-          width={250}
+          src={Partner4}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -111,19 +106,9 @@ return(
     <div className="slide">
       <a href="#" tabIndex={-1}>
         <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/6.png"
-          height={100}
-          width={250}
-          alt=""
-        />
-      </a>
-    </div>
-    <div className="slide">
-      <a href="#" tabIndex={-1}>
-        <img
-          src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/557257/7.png"
-          height={100}
-          width={250}
+          src={Partner5}
+          height={80}
+          width={200}
           alt=""
         />
       </a>
@@ -131,7 +116,6 @@ return(
   </div>
 </div>
 </div>
-
 
 )
     

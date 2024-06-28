@@ -1,9 +1,14 @@
-import React from "react";
-import "../contact/contact.css";
+import React, { useEffect } from "react";
+import "./rightside.css";
+import Aos from 'aos';
+import 'aos/dist/aos.css'
 
 let RightSideContact = () => {
+  useEffect(() => {
+    Aos.init();
+     }, [])
   return (
-    <form action="#" className="ContactRightContainer">
+    <form action="#" className="ContactRightContainer" data-aos="fade-down-left">
       <div className="NameCompany">
         <div className="fullname">
           <label htmlFor="fullname">Tam ad</label>

@@ -15,7 +15,7 @@ import FiveService from './components/services/serviceslist/fiveservice';
 import SixService from './components/services/serviceslist/sixservice';
 import SevenService from './components/services/serviceslist/sevenservice';
 import EightService from './components/services/serviceslist/eightservice';
-import LoaderStyle from './components/loader/loader';
+import NotFound from './components/notfound404/notfound';
 
 
 
@@ -39,6 +39,7 @@ function App() {
         <Route path="/services/sixservice" element={<Layout><SixService/></Layout>} />
         <Route path="/services/sevenservice" element={<Layout><SevenService/></Layout>} />
         <Route path="/services/eightservice" element={<Layout><EightService/></Layout>} />
+        <Route path="*" element={<Layout><NotFound/></Layout>} />
     </Route>
     </Routes>
     </BrowserRouter>
