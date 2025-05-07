@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farhad - Frontend Developer Portfolio</title>
+    <style>
+        /* --- CSS Variables for Themes --- */
+        :root {
+            --lightBackgroundColor: #f4f4f4;
+            --lightTextColor: #333;
+            --lightPrimaryColor: #e57373; /* Soft Red */
+            --lightSecondaryColor: #ffb74d; /* Orange */
+            --lightCardBackground: #fff;
+            --lightBorderColor: #ccc;
+            --lightHeaderBackground: rgba(255, 255, 255, 0.8);
+        }
+
+        body.darkMode {
+            --lightBackgroundColor: #1a1a2e; /* Dark Blue */
+            --lightTextColor: #e0e0e0; /* Light Grey */
+            --lightPrimaryColor: #e94560; /* Red */
+            --lightSecondaryColor: #0f3460; /* Darker Blue */
+            --lightCardBackground: #16213e; /* Darker Blue */
+            --lightBorderColor: #0f3460;
+            --lightHeaderBackground: rgba(22, 33, 62, 0.9);
+        }
+
+        /* --- Base Styles --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif; /* Choose a suitable font */
+            background-color: var(--lightBackgroundColor);
+            color: var(--lightTextColor);
+            line-height: 1.6;
+            transition: background-color 0.5s ease, color 0.5s ease;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            position: relative; /* Needed for background positioning */
+        }
+
+        /* --- Mars Background Animation --- */
+        .backgroundContainer {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Send to back */
+            overflow: hidden;
+            background: radial-gradient(ellipse at bottom, #ff8c00 0%, #800000 70%, #4b0082 100%); /* Reddish/Purple gradient */
+        }
+
+        .backgroundDust {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="5" fill="%23e0e0e0" opacity="0.1"/><circle cx="20" cy="80" r="3" fill="%23e0e0e0" opacity="0.08"/><circle cx="70" cy="30" r="4" fill="%23e0e0e0" opacity="0.12"/></svg>'); /* Subtle dust/star pattern */
+            background-size: 10px 10px; /* Adjust size */
+            animation: dustFlow 300s linear infinite;
+        }
+
+        @keyframes dustFlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(-200%, 100%); } /* Animate across screen */
+        }
+
+
+        /* Add more animated elements like stars/particles */
+         .animatedParticle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.6);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: particleTwinkle var(--duration) linear infinite var(--delay);
+            width: var(--size);
+            height: var(--size);
+            top: var(--top);
+            left: var(--left);
+        }
+
+        @keyframes particleTwinkle {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 1; }
+        }
+
+
+        /* --- Header and Navigation --- */
+        .siteHeader {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--lightHeaderBackground);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .siteLogo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--lightPrimaryColor);
+        }
+
+        .navList {
+            list-style: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .navItem {
+            margin-left: 2rem;
+        }
+
+        .navLink {
+            text-decoration: none;
+            color: var(--lightTextColor);
+            font-weight: bold;
+            transition: color 0.3s ease, transform 0.2s ease;
+            position: relative;
+        }
+
+        .navLink::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--lightPrimaryColor);
+            transition: width 0.3s ease;
+        }
+
+        .navLink:hover::after,
+        .navLink.active::after {
+            width: 100%;
+        }
+
+        .navLink:hover {
+            color: var(--lightPrimaryColor);
+            transform: translateY(-2px);
+        }
+
+        .themeToggle {
+            background: none;
+            border: none;
+            color: var(--lightTextColor);
+            font-size: 1.5rem;
+            cursor: pointer;
+            margin-left: 1.5rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .themeToggle:hover {
+            color: var(--lightPrimaryColor);
+            transform: rotate(30deg);
+        }
+
+         .menuToggle {
+            display: none; /* Hidden by default on larger screens */
+            background: none;
+            border: none;
+            color: var(--lightTextColor);
+            font-size: 2rem;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+         .menuToggle:hover {
+            color: var(--lightPrimaryColor);
+         }
+
+
+        /* --- Main Content and Sections --- */
+        .mainContent {
+            padding: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative; /* Needed for z-index above background */
+            z-index: 1;
+        }
+
+        .contentSection {
+            padding: 6rem 0; /* More padding for visual separation */
+            min-height: 100vh; /* Make sections at least viewport height */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Center content vertically */
+        }
+
+        .sectionTitle {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--lightPrimaryColor);
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+         .sectionTitle::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--lightSecondaryColor);
+            border-radius: 3px;
+        }
+
+
+        /* --- Home Section (Hero) --- */
+        .heroSection {
+            text-align: center;
+            padding-top: 8rem; /* Extra padding to clear sticky header */
+            min-height: calc(100vh - 80px); /* Adjust height */
+        }
+
+        .heroSection h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--lightPrimaryColor);
+        }
+
+         .heroSection p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--lightTextColor);
+         }
+
+        .ctaButton {
+            display: inline-block;
+            background-color: var(--lightPrimaryColor);
+            color: white;
+            padding: 0.8rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .ctaButton:hover {
+            background-color: var(--lightSecondaryColor);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        /* --- About Section --- */
+         .aboutContent {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            align-items: center;
+            justify-content: center;
+         }
+         .aboutText {
+            flex: 2;
+            min-width: 300px;
+         }
+         .aboutSkills {
+            flex: 1;
+            min-width: 200px;
+         }
+         .aboutSkills h3 {
+            margin-bottom: 1rem;
+            color: var(--lightPrimaryColor);
+         }
+         .skillList {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 0.8rem;
+         }
+         .skillItem {
+            background-color: var(--lightCardBackground);
+            padding: 0.8rem;
+            border-radius: 5px;
+            text-align: center;
+            border: 1px solid var(--lightBorderColor);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+         .skillItem:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+         }
+
+
+        /* --- Projects Section --- */
+        .projectGrid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .projectCard {
+            background-color: var(--lightCardBackground);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--lightBorderColor);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projectCard:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .projectImageContainer {
+            position: relative;
+            overflow: hidden;
+        }
+        .projectImage {
+            width: 100%;
+            height: 200px; /* Fixed height for consistency */
+            object-fit: cover; /* Cover container */
+            transition: transform 0.5s ease;
+        }
+        .projectCard:hover .projectImage {
+            transform: scale(1.1);
+        }
+
+        .projectInfo {
+            padding: 1.5rem;
+            flex-grow: 1; /* Make info section take available space */
+            display: flex;
+            flex-direction: column;
+        }
+
+        .projectTitle {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            color: var(--lightPrimaryColor);
+        }
+
+        .projectDescription {
+            margin-bottom: 1rem;
+            flex-grow: 1; /* Push links to bottom */
+        }
+
+        .projectLinks a {
+            display: inline-block;
+            margin-right: 1rem;
+            color: var(--lightSecondaryColor);
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        .projectLinks a:hover {
+            color: var(--lightPrimaryColor);
+        }
+
+
+        /* --- Experiences Section --- */
+         .experienceItem {
+            background-color: var(--lightCardBackground);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid var(--lightBorderColor);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+         .experienceItem:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         }
+         .experienceTitle {
+            font-size: 1.3rem;
+            color: var(--lightPrimaryColor);
+            margin-bottom: 0.5rem;
+         }
+         .experienceSubtitle {
+             font-size: 1rem;
+             color: var(--lightTextColor);
+             opacity: 0.8;
+             margin-bottom: 0.5rem;
+         }
+         .experienceDate {
+            font-size: 0.9rem;
+            color: var(--lightTextColor);
+            opacity: 0.7;
+            margin-bottom: 1rem;
+         }
+
+
+        /* --- Contact Section --- */
+        .contactInfo {
+            text-align: center;
+        }
+        .contactInfo p {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+         .contactInfo a {
+             color: var(--lightPrimaryColor);
+             text-decoration: none;
+             font-weight: bold;
+             transition: color 0.3s ease;
+         }
+         .contactInfo a:hover {
+             color: var(--lightSecondaryColor);
+         }
+
+
+        /* --- Footer --- */
+        .siteFooter {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--lightBorderColor);
+            color: var(--lightTextColor);
+            opacity: 0.8;
+        }
+
+        /* --- Scroll Animation Classes --- */
+        .animateOnScroll {
+            opacity: 0;
+            transform: translateY(50px); /* Start from below */
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+
+        .animateOnScroll.isAnimated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* --- Mobile Navigation --- */
+        @media (max-width: 768px) {
+            .siteHeader {
+                padding: 1rem;
+            }
+            .navList {
+                display: none; /* Hide by default on mobile */
+                flex-direction: column;
+                position: absolute;
+                top: 60px; /* Below header */
+                left: 0;
+                width: 100%;
+                background-color: var(--lightHeaderBackground); /* Same as header */
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+                padding: 1rem 0;
+                 /* Animation for opening/closing */
+                 transform: translateY(-100%);
+                 transition: transform 0.3s ease-out;
+                 z-index: 99; /* Below header but above content */
+            }
+
+             .navList.navOpen {
+                 display: flex; /* Show when open */
+                 transform: translateY(0);
+             }
+
+            .navItem {
+                margin: 0.5rem 0;
+                text-align: center;
+            }
+
+            .menuToggle {
+                display: block; /* Show on mobile */
+            }
+
+             .themeToggle {
+                 margin-left: 1rem; /* Adjust spacing */
+             }
+
+            .mainContent {
+                padding: 1rem; /* Reduce padding */
+            }
+
+             .contentSection {
+                 padding: 4rem 0; /* Reduce vertical padding */
+                 min-height: auto; /* Allow sections to be shorter than viewport */
+             }
+
+            .heroSection {
+                 padding-top: 6rem; /* Adjust padding */
+                 min-height: auto; /* Allow shorter height */
+            }
+
+            .heroSection h1 {
+                font-size: 2.5rem;
+            }
+             .heroSection p {
+                 font-size: 1.2rem;
+             }
+
+            .sectionTitle {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+             .aboutContent {
+                flex-direction: column; /* Stack elements */
+             }
+             .aboutText, .aboutSkills {
+                 min-width: auto;
+                 width: 100%;
+             }
+
+             .projectGrid {
+                 grid-template-columns: 1fr; /* Single column */
+             }
+
+             .projectCard {
+                 flex-direction: column; /* Stack image and info */
+             }
+             .projectImage {
+                 height: 180px; /* Smaller image height */
+             }
+             .projectInfo {
+                 padding: 1rem;
+             }
+             .projectTitle {
+                 font-size: 1.3rem;
+             }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="backgroundContainer">
+        <div class="backgroundDust"></div>
+        <div class="animatedParticle" style="--size: 3px; --top: 10%; --left: 20%; --duration: 5s; --delay: 0s;"></div>
+        <div class="animatedParticle" style="--size: 2px; --top: 50%; --left: 70%; --duration: 7s; --delay: 1s;"></div>
+        <div class="animatedParticle" style="--size: 4px; --top: 80%; --left: 40%; --duration: 6s; --delay: 2s;"></div>
+        <div class="animatedParticle" style="--size: 3px; --top: 30%; --left: 90%; --duration: 8s; --delay: 3s;"></div>
+        <div class="animatedParticle" style="--size: 2px; --top: 60%; --left: 10%; --duration: 5.5s; --delay: 1.5s;"></div>
+         <div class="animatedParticle" style="--size: 4px; --top: 5%; --left: 60%; --duration: 7.5s; --delay: 4s;"></div>
+          <div class="animatedParticle" style="--size: 3px; --top: 95%; --left: 5%; --duration: 6.5s; --delay: 2.5s;"></div>
+    </div>
+
+    <header class="siteHeader">
+        <div class="siteLogo">Farhad</div>
+        <nav class="siteNav">
+            <ul class="navList">
+                <li class="navItem"><a href="#home" class="navLink">Home</a></li>
+                <li class="navItem"><a href="#about" class="navLink">About</a></li>
+                <li class="navItem"><a href="#projects" class="navLink">Projects</a></li>
+                <li class="navItem"><a href="#experiences" class="navLink">Experiences</a></li>
+                <li class="navItem"><a href="#contact" class="navLink">Contact</a></li>
+            </ul>
+        </nav>
+         <button class="themeToggle" aria-label="Toggle dark or light mode">☀️</button> <button class="menuToggle" aria-label="Open mobile menu">&#9776;</button> </header>
+
+    <main class="mainContent">
+        <section id="home" class="contentSection heroSection animateOnScroll">
+            <h1>Hello, I'm Farhad</h1>
+            <p>A Passionate Frontend Developer Crafting Seamless Web Experiences.</p>
+            <a href="#projects" class="ctaButton">View My Work</a>
+        </section>
+
+        <section id="about" class="contentSection aboutSection animateOnScroll">
+            <h2 class="sectionTitle">About Me</h2>
+            <div class="aboutContent">
+                <div class="aboutText">
+                    <p>
+                        As a dedicated frontend developer, I specialize in building responsive and engaging user interfaces. I love bringing ideas to life using clean, efficient code and a strong understanding of user experience. My goal is to create websites that not only look stunning but are also intuitive and accessible for everyone.
+                    </p>
+                    <p>
+                         I am constantly learning and exploring new technologies to stay at the forefront of web development. Let's build something amazing together!
+                    </p>
+                </div>
+                <div class="aboutSkills">
+                     <h3>Skills</h3>
+                     <ul class="skillList">
+                         <li class="skillItem">HTML5</li>
+                         <li class="skillItem">CSS3</li>
+                         <li class="skillItem">JavaScript (ES6+)</li>
+                         <li class="skillItem">React</li>
+                         <li class="skillItem">Vue.js</li>
+                         <li class="skillItem">Responsive Design</li>
+                         <li class="skillItem">Git</li>
+                         <li class="skillItem">Web Performance</li>
+                     </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="contentSection projectsSection animateOnScroll">
+            <h2 class="sectionTitle">Projects</h2>
+            <div class="projectGrid">
+                <div class="projectCard animateOnScroll">
+                    <div class="projectImageContainer">
+                        <img src="https://via.placeholder.com/400x250?text=Project+1+Image" alt="Placeholder image for Project 1" class="projectImage">
+                    </div>
+                    <div class="projectInfo">
+                        <h3 class="projectTitle">Project Title One</h3>
+                        <p class="projectDescription">A brief description of Project One, highlighting its key features and technologies used.</p>
+                        <div class="projectLinks">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+                 <div class="projectCard animateOnScroll">
+                    <div class="projectImageContainer">
+                        <img src="https://via.placeholder.com/400x250?text=Project+2+Image" alt="Placeholder image for Project 2" class="projectImage">
+                    </div>
+                    <div class="projectInfo">
+                        <h3 class="projectTitle">Project Title Two</h3>
+                        <p class="projectDescription">A brief description of Project Two, highlighting its key features and technologies used.</p>
+                        <div class="projectLinks">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub Repo</a>
+                        }</div>
+                    </div>
+                </div>
+                 <div class="projectCard animateOnScroll">
+                    <div class="projectImageContainer">
+                        <img src="https://via.placeholder.com/400x250?text=Project+3+Image" alt="Placeholder image for Project 3" class="projectImage">
+                    </div>
+                    <div class="projectInfo">
+                        <h3 class="projectTitle">Project Title Three</h3>
+                        <p class="projectDescription">A brief description of Project Three, highlighting its key features and technologies used.</p>
+                        <div class="projectLinks">
+                            <a href="#" target="_blank">Live Demo</a>
+                            <a href="#" target="_blank">GitHub Repo</a>
+                        </div>
+                    </div>
+                </div>
+                </div>
+        </section>
+
+        <section id="experiences" class="contentSection experiencesSection animateOnScroll">
+            <h2 class="sectionTitle">Experiences</h2>
+             <div class="experienceList">
+                 <div class="experienceItem animateOnScroll">
+                     <h3 class="experienceTitle">Frontend Developer</h3>
+                     <p class="experienceSubtitle">Awesome Tech Company</p>
+                     <p class="experienceDate">Jan 20XX - Present</p>
+                     <ul>
+                         <li>Developed and maintained responsive web applications using HTML, CSS, and JavaScript.</li>
+                         <li>Collaborated with design and backend teams to deliver high-quality user interfaces.</li>
+                         <li>Implemented new features and optimized existing codebase for performance.</li>
+                     </ul>
+                 </div>
+                  <div class="experienceItem animateOnScroll">
+                     <h3 class="experienceTitle">Junior Web Developer</h3>
+                     <p class="experienceSubtitle">Creative Agency Name</p>
+                     <p class="experienceDate">Jun 20XX - Dec 20XX</p>
+                      <ul>
+                         <li>Assisted in building landing pages and marketing websites.</li>
+                         <li>Learned and applied best practices in frontend development.</li>
+                         <li>Gained experience with version control (Git).</li>
+                     </ul>
+                 </div>
+                 </div>
+        </section>
+
+        <section id="contact" class="contentSection contactSection animateOnScroll">
+            <h2 class="sectionTitle">Contact</h2>
+            <div class="contactInfo">
+                <p>Feel free to get in touch!</p>
+                <p>Email: <a href="mailto:your.email@example.com">your.email@example.com</a></p>
+                <p>LinkedIn: <a href="https://linkedin.com/in/yourprofile" target="_blank">linkedin.com/in/yourprofile</a></p>
+                <p>GitHub: <a href="https://github.com/yourusername" target="_blank">github.com/yourusername</a></p>
+                </div>
+        </section>
+    </main>
+
+    <footer class="siteFooter">
+        <p>&copy; 2023 Farhad. All rights reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const themeToggle = document.querySelector('.themeToggle');
+            const body = document.body;
+            const navList = document.querySelector('.navList');
+            const menuToggle = document.querySelector('.menuToggle');
+            const navLinks = document.querySelectorAll('.navLink');
+            const sections = document.querySelectorAll('.contentSection');
+            const elementsToAnimate = document.querySelectorAll('.animateOnScroll');
+
+            // --- Theme Toggle ---
+            const storedTheme = localStorage.getItem('theme');
+            if (storedTheme === 'darkMode') {
+                body.classList.add('darkMode');
+                themeToggle.textContent = '🌙'; // Moon icon for dark mode
+            } else {
+                 themeToggle.textContent = '☀️'; // Sun icon for light mode
+            }
+
+            themeToggle.addEventListener('click', () => {
+                body.classList.toggle('darkMode');
+                if (body.classList.contains('darkMode')) {
+                    localStorage.setItem('theme', 'darkMode');
+                    themeToggle.textContent = '🌙';
+                } else {
+                    localStorage.setItem('theme', 'lightMode');
+                    themeToggle.textContent = '☀️';
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            menuToggle.addEventListener('click', () => {
+                navList.classList.toggle('navOpen');
+            });
+
+            // Close menu when a link is clicked (on mobile)
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navList.classList.contains('navOpen')) {
+                        navList.classList.remove('navOpen');
+                    }
+                });
+            });
+
+
+            // --- Smooth Scrolling ---
+             navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href').substring(1);
+                    const targetSection = document.getElementById(targetId);
+
+                    if (targetSection) {
+                        // Scroll to section, offset by header height
+                        const headerHeight = document.querySelector('.siteHeader').offsetHeight;
+                        const elementPosition = targetSection.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.scrollY - headerHeight;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+
+            // --- Scroll-Triggered Animations (Intersection Observer) ---
+            const observerOptions = {
+                root: null, // Use the viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('isAnimated');
+                        // Optionally, stop observing once animated if it should only happen once
+                        // observer.unobserve(entry.target);
+                    } else {
+                         // Optional: Remove class when out of view to re-animate on scroll back
+                         entry.target.classList.remove('isAnimated');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe each element intended for animation
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
+            });
+
+
+             // --- Highlight Active Nav Link on Scroll ---
+             const highlightNavLink = () => {
+                 let activeSectionId = '';
+                 const scrollPosition = window.scrollY + document.querySelector('.siteHeader').offsetHeight + 1; // Add header height offset
+
+                 sections.forEach(section => {
+                     const sectionTop = section.offsetTop;
+                     const sectionHeight = section.offsetHeight;
+                     if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                         activeSectionId = section.getAttribute('id');
+                     }
+                 });
+
+                 navLinks.forEach(link => {
+                     link.classList.remove('active');
+                     if (link.getAttribute('href').substring(1) === activeSectionId) {
+                         link.classList.add('active');
+                     }
+                 });
+             };
+
+             // Listen for scroll events to highlight the active link
+             window.addEventListener('scroll', highlightNavLink);
+             // Also call on load to highlight the initial section (usually Home)
+             highlightNavLink();
+
+        });
+    </script>
+
+</body>
+</html>
